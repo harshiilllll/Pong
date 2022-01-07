@@ -1,0 +1,128 @@
+:root{
+    --hue: 200;
+    --saturation: 50%;
+    --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+    --background-color: hsl(var(--hue), var(--saturation), 20%);
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.paddle{
+    --position: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color);
+    top: calc(var(--position) * 1vh);
+    transform: translateY(-50%);
+    width: 1vh; height: 13vh;
+    border-radius: 2px;
+}
+
+.paddle.left{
+    left: 1vw;
+}
+
+.paddle.right{
+    right: 1vw;
+}
+
+.ball{
+    --x: 50;
+    --y: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color);
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    transform: translate(-50%, -50%);
+    width: 2.5vh; height: 2.5vh;
+    border-radius: 50%;
+}
+
+.score{
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 7vh;
+    font-weight: bold;
+    color: var(--foreground-color);
+    display: none;
+    margin-top: 2vh;
+}
+
+.score > *{
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+    opacity: .5;
+}
+
+.score > :first-child{
+    text-align: right;
+    border-right: .5vh solid var(--foreground-color);
+}
+
+.btn{
+    width: 20vh;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--foreground-color);
+    color: var(--background-color);
+    padding: 2vh 3vh;
+    text-align: center;
+    letter-spacing: .2vh;
+    font-family: monospace;
+    font-size: 3vh;
+    font-weight: 900;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.4);
+    transform: translateX(-50%) scale(1.06);
+}
+
+.wlcm-txt{
+    text-align: center;
+    font-size: 7vh;
+    font-family: monospace;
+    color: var(--foreground-color);
+    font-weight: 900;
+    margin-top: 5vh;
+    animation: text 3s linear  infinite  ;
+}
+
+.press-start{
+    text-align: center;
+    font-size: 2vh;
+    font-family: monospace;
+    color: rgb(255, 255, 109);
+    font-weight: 900;
+    letter-spacing: 2vh;
+    margin-top: 2vh;
+}
+
+@keyframes text {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
